@@ -1,5 +1,7 @@
 package ru.digilleague;
 
+import ru.digilleague.collections.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         int i = 10;
