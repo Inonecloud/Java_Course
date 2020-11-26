@@ -16,9 +16,16 @@ public class ArrayList<E> {
         this.size = elements.length;
     }
 
-    public boolean add(E element) {
+    public void add(E element) {
+        if (size== elements.length-1)
+            resize(elements.length+50);
+        elements[size++]=element;
+    }
 
-        return true;
+    private void resize(int length) {
+        Object[] newElements = new Object[length];
+        System.arraycopy(elements, 0, newElements, 0, size);
+        elements = newElements;
     }
 
     public Object get(int index) {
