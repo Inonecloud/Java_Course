@@ -17,7 +17,39 @@ public class ArrayList<E> {
     }
 
     public boolean add(E element) {
+        if (size > 0 ) {
+            if (size == elements.length) {
+                while (elements[size - 1] == null) {
+                    size--;
+                    if (size == 0) break;
+                }
+                if(size == elements.length) {
+                    Object[] newArray = new Object[elements.length + 50];
+                    System.arraycopy(elements, 0, newArray, 0, size);
+                    elements = newArray;
+                }
+                elements[size++] = element;
 
+            } else {
+                while (elements[size - 1] == null) {
+                    size--;
+                    if (size == 0) break;
+                }
+                if (size != 0) {
+                    Object[] newArray = new Object[elements.length+1];
+                    System.arraycopy(elements, 0, newArray, 0, size);
+                    elements = newArray;
+                }
+                elements[size++] = element;
+            }
+        }
+        else {
+            if(elements.length < 1){
+                Object[] newArray = new Object[elements.length+50];
+                elements = newArray;
+            }
+            elements[size++] = element;
+        }
         return true;
     }
 
@@ -25,7 +57,7 @@ public class ArrayList<E> {
         if (index < size) {
             return elements[index];
         }else {
-            throw new IndexOutOfBoundsException();
+            return "IndexOutOfBoundsException";
         }
     }
 
